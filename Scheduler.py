@@ -8,3 +8,8 @@ class Processo():
 
     def __str__(self):
         return f"{self.nome} (ID: {self.id}, Prioridade: {self.prioridade})"
+    
+class Node:
+    def __init__(self, processo):
+        self.processo = processo
+        self.proximo = None
