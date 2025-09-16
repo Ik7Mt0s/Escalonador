@@ -94,3 +94,14 @@ class Scheduler:
                 processo = self.lista_baixa_prioridade.remover_inicio()
             self.contador_alta_prioridade = 0
             print(f"Anti-inanição executada")
+
+        if processo is None:
+            if not self.lista_alta_prioridade.lista_vazia():
+                processo = self.lista_alta_prioridade.remover_inicio()
+                self.contador_alta_prioridade += 1
+            elif not self.lista_media_prioridade.lista_vazia():
+                processo = self.lista_media_prioridade.remover_inicio()
+            elif not self.lista_baixa_prioridade.lista_vazia():
+                processo = self.lista_baixa_prioridade.remover_inicio()
+            else: 
+                print("Nenhum processo para executar")
