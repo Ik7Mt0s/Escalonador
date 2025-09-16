@@ -60,3 +60,11 @@ class ListaProcessos:
                 elementos.append(str(atual.processo))
                 atual = atual.proximo
             return "->".join(elementos)
+        
+class Scheduler:
+    def __init__(self):
+        self.lista_alta_prioridade = ListaProcessos()
+        self.lista_media_prioridade = ListaProcessos()
+        self.lista_baixa_prioridade = ListaProcessos()
+        self.lista_bloqueados = ListaProcessos()
+        self.contador_alta_prioridade = 0
