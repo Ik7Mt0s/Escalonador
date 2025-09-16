@@ -13,3 +13,9 @@ class Node:
     def __init__(self, processo):
         self.processo = processo
         self.proximo = None
+
+class ListaProcessos:
+    def __init__(self):
+        self.cabeca = None
+        self.cauda = None
+        self.tamanho = 0
