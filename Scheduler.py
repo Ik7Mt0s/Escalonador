@@ -119,3 +119,14 @@ class Scheduler:
         else:
             self.adicionar_processo(processo)
             print(f"Processo {processo.nome} volta para fila ({processo.ciclos_necessarios} ciclos restantes)")
+
+    def status(self):
+        print("\n" + "="*50)
+        print("ESTADO DO ESCALONADOR")
+        print("="*50)
+        print(f"Alta: {self.lista_alta_prioridade}")
+        print(f"Média: {self.lista_media_prioridade}")
+        print(f"Baixa: {self.lista_baixa_prioridade}")
+        print(f"Bloqueados: {self.lista_bloqueados}")
+        print(f"Contador anti-inanição: {self.contador_alta_prioridade}/5")
+        print("="*50)
