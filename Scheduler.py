@@ -28,3 +28,13 @@ class ListaProcessos:
             return "Lista de Processos: Vazia"
         else:
             return f"Lista de Processos: {self.tamanho} processo(s)"
+        
+    def adicionar_final(self, processo):
+        novo_no = Node(processo)
+        if self.lista_vazia():
+            self.cabeca = novo_no
+            self.cauda = novo_no
+        else:
+            self.cauda.proximo = novo_no
+            self.cauda = novo_no
+        self.tamanho += 1
