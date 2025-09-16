@@ -49,3 +49,14 @@ class ListaProcessos:
                 self.cauda = None
             self.tamanho -= 1
             return processo_removido
+        
+    def __str__(self):
+        if self.lista_vazia():
+            return "Lista vazia"
+        else:
+            elementos = []
+            atual = self.cabeca
+            while atual:
+                elementos.append(str(atual.processo))
+                atual = atual.proximo
+            return "->".join(elementos)
