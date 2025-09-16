@@ -38,3 +38,14 @@ class ListaProcessos:
             self.cauda.proximo = novo_no
             self.cauda = novo_no
         self.tamanho += 1
+
+    def remover_inicio(self):
+        if self.lista_vazia():
+            return None
+        else:
+            processo_removido = self.cabeca.processo
+            self.cabeca = self.cabeca.proximo
+            if self.cabeca is None:
+                self.cauda = None
+            self.tamanho -= 1
+            return processo_removido
