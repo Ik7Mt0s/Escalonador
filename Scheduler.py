@@ -105,3 +105,8 @@ class Scheduler:
                 processo = self.lista_baixa_prioridade.remover_inicio()
             else: 
                 print("Nenhum processo para executar")
+
+        if processo is not None and processo.recurso_necessario == "DISCO":
+            self.lista_bloqueados.adicionar_final(processo)
+            print(f"Processo {processo.nome} bloqueado")
+            return
