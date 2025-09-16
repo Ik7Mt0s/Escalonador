@@ -22,3 +22,9 @@ class ListaProcessos:
 
     def lista_vazia(self):
         return self.cabeca is None
+    
+    def status(self):
+        if self.lista_vazia():
+            return "Lista de Processos: Vazia"
+        else:
+            return f"Lista de Processos: {self.tamanho} processo(s)"
