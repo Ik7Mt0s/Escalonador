@@ -78,3 +78,9 @@ class Scheduler:
             self.lista_baixa_prioridade.adicionar_final(processo)
         else:
             return "Processo não pode entrar"
+        
+    def executar(self):
+        if not self.lista_bloqueados.lista_vazia():
+            processo_desbloqueado = self.lista_bloqueados.remover_inicio()
+            self.adicionar_processo(processo_desbloqueado)
+            print(f"Processo {processo_desbloqueado} desbloqueado")
