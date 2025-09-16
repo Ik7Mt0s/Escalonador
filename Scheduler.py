@@ -84,3 +84,13 @@ class Scheduler:
             processo_desbloqueado = self.lista_bloqueados.remover_inicio()
             self.adicionar_processo(processo_desbloqueado)
             print(f"Processo {processo_desbloqueado} desbloqueado")
+
+        processo = None
+
+        if self.contador_alta_prioridade >= 5:
+            if not self.lista_media_prioridade.lista_vazia():
+                processo = self.lista_media_prioridade.remover_inicio()
+            elif not self.lista_baixa_prioridade.lista_vazia():
+                processo = self.lista_baixa_prioridade.remover_inicio()
+            self.contador_alta_prioridade = 0
+            print(f"Anti-inanição executada")
