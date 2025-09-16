@@ -110,3 +110,12 @@ class Scheduler:
             self.lista_bloqueados.adicionar_final(processo)
             print(f"Processo {processo.nome} bloqueado")
             return
+        
+        print(f"Excutando: {processo.nome}")
+        processo.ciclos_necessarios -= 1
+
+        if processo.ciclos_necessarios <= 0:
+            print(f"Processo {processo.nome} finalizado")
+        else:
+            self.adicionar_processo(processo)
+            print(f"Processo {processo.nome} volta para fila ({processo.ciclos_necessarios} ciclos restantes)")
