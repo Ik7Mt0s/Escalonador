@@ -68,3 +68,13 @@ class Scheduler:
         self.lista_baixa_prioridade = ListaProcessos()
         self.lista_bloqueados = ListaProcessos()
         self.contador_alta_prioridade = 0
+
+    def adicionar_processo(self, processo):
+        if processo.prioridade == 1:
+            self.lista_alta_prioridade.adicionar_final(processo)
+        elif processo.prioridade == 2:
+            self.lista_media_prioridade.adicionar_final(processo)
+        elif processo.prioridade == 3:
+            self.lista_baixa_prioridade.adicionar_final(processo)
+        else:
+            return "Processo não pode entrar"
