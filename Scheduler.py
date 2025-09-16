@@ -19,3 +19,6 @@ class ListaProcessos:
         self.cabeca = None
         self.cauda = None
         self.tamanho = 0
+
+    def lista_vazia(self):
+        return self.cabeca is None
