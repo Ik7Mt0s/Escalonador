@@ -5,6 +5,7 @@ class Processo():
         self.prioridade = prioridade
         self.ciclos_necessarios = ciclos_necessarios
         self.recurso_necessario = recurso_necessario
+        self.recurso_solicitado = False
 
     def __str__(self):
         return f"{self.nome} (ID: {self.id}, Prioridade: {self.prioridade})"
@@ -82,6 +83,7 @@ class Scheduler:
     def executar(self):
         if not self.lista_bloqueados.lista_vazia():
             processo_desbloqueado = self.lista_bloqueados.remover_inicio()
+            processo_desbloqueado.recurso_solicitado = True
             self.adicionar_processo(processo_desbloqueado)
             print(f"Processo {processo_desbloqueado} desbloqueado")
 
@@ -106,7 +108,7 @@ class Scheduler:
             else: 
                 print("Nenhum processo para executar")
 
-        if processo is not None and processo.recurso_necessario == "DISCO":
+        if processo is not None and processo.recurso_necessario == "DISCO" and not processo.recurso_solicitado:
             self.lista_bloqueados.adicionar_final(processo)
             print(f"Processo {processo.nome} bloqueado")
             return
