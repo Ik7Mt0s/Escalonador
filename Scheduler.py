@@ -185,3 +185,6 @@ def main():
     """
     # Nome do arquivo CSV que contém os processos
     nome_arquivo = "processos.csv"
+
+    # Cria uma instância do escalonador
+    scheduler = Scheduler()
