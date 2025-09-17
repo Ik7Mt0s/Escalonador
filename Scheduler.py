@@ -179,7 +179,9 @@ class Scheduler:
 import csv
 
 def main():
-      """
+    """
     Função principal do programa
     Responsável por carregar processos de arquivo CSV e executar o escalonador
     """
+    # Nome do arquivo CSV que contém os processos
+    nome_arquivo = "processos.csv"
