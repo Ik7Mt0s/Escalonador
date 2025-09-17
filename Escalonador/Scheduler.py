@@ -250,12 +250,12 @@ def main():
             
     except FileNotFoundError:
         # Trata erro caso o arquivo CSV não seja encontrado
-        print("❌ Arquivo 'processos.csv' não encontrado!")
-        print("💡 Certifique-se de que o arquivo está na mesma pasta do programa")
+        print("Arquivo 'processos.csv' não encontrado!")
+        print("Certifique-se de que o arquivo está na mesma pasta do programa")
         
     except Exception as e:
         # Trata qualquer outro erro inesperado
-        print(f"❌ Erro inesperado: {e}")
+        print(f"Erro inesperado: {e}")
 
 # Ponto de entrada do programa
 # Executa a função main() apenas se este arquivo for executado diretamente
