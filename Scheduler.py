@@ -188,3 +188,76 @@ def main():
 
     # Cria uma instância do escalonador
     scheduler = Scheduler()
+    
+    print("Carregando processos do arquivo...")
+
+    try:
+        # Abre o arquivo CSV para leitura
+        with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
+            # Cria um leitor CSV para processar o arquivo
+            leitor = csv.reader(arquivo)
+            next(leitor)  # Pula a primeira linha (cabeçalho do CSV)
+            
+            # Processa cada linha do arquivo CSV
+            for linha in leitor:
+                # Verifica se a linha tem pelo menos 5 colunas (dados completos)
+                if len(linha) >= 5:
+                    try:
+                        # Converte e extrai os dados de cada coluna:
+                        id = int(linha[0])           # Coluna 0: ID (convertido para inteiro)
+                        nome = linha[1]              # Coluna 1: Nome do processo
+                        prioridade = int(linha[2])   # Coluna 2: Prioridade (1-3)
+                        ciclos = int(linha[3])       # Coluna 3: Ciclos necessários
+                        # Coluna 4: Recurso necessário (None se vazio)
+                        recurso = linha[4] if linha[4] != "" else None
+                        
+                        # Cria um objeto Processo com os dados extraídos
+                        processo = Processo(id, nome, prioridade, ciclos, recurso)
+                        
+                        # Adiciona o processo ao escalonador na fila de prioridade correta
+                        scheduler.adicionar_processo(processo)
+                        
+                    except ValueError:
+                        # Ignora linhas com erro de conversão (dados inválidos)
+                        continue
+        
+        print("Processos carregados!")
+        
+        # Exibe o estado inicial do escalonador após carregamento
+        scheduler.status()
+        
+        # EXECUÇÃO PRINCIPAL DO ESCALONADOR
+        # Executa ciclos continuamente até que todos os processos terminem
+        ciclo = 1  # Contador de ciclos executados
+        
+        while True:
+            print(f"\n🎯 CICLO {ciclo}")
+            
+            # Executa um ciclo completo de escalonamento
+            scheduler.executar()
+            
+            # VERIFICAÇÃO DE TÉRMINO
+            # Verifica se TODAS as listas do escalonador estão vazias:
+            if (scheduler.lista_alta_prioridade.lista_vazia() and
+                scheduler.lista_media_prioridade.lista_vazia() and
+                scheduler.lista_baixa_prioridade.lista_vazia() and
+                scheduler.lista_bloqueados.lista_vazia()):
+                
+                print("🎉 TODOS OS PROCESSOS TERMINARAM!")
+                break  # Sai do loop quando não há mais processos
+                
+            ciclo += 1  # Incrementa contador de ciclos
+            
+    except FileNotFoundError:
+        # Trata erro caso o arquivo CSV não seja encontrado
+        print("❌ Arquivo 'processos.csv' não encontrado!")
+        print("💡 Certifique-se de que o arquivo está na mesma pasta do programa")
+        
+    except Exception as e:
+        # Trata qualquer outro erro inesperado
+        print(f"❌ Erro inesperado: {e}")
+
+# Ponto de entrada do programa
+# Executa a função main() apenas se este arquivo for executado diretamente
+if __name__ == "__main__":
+    main()
