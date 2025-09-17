@@ -175,3 +175,11 @@ class Scheduler:
         print(f"Bloqueados: {self.lista_bloqueados}")
         print(f"Contador anti-inanição: {self.contador_alta_prioridade}/5")
         print("="*50)
+
+import csv
+
+def main():
+      """
+    Função principal do programa
+    Responsável por carregar processos de arquivo CSV e executar o escalonador
+    """
