@@ -13,7 +13,7 @@
 - **Email**: icaro_castelo.branco@somosicev.com
 
 ## 🎯 Descrição do Projeto
-Implementação de um escalonador de processos para o sistema operacional iCEVOS, utilizando listas encadeadas implementadas "do zero" em Python. O sistema gerencia múltiplas filas de prioridade com prevenção de inanição e controle de recursos.
+Implementação de um escalonador de processos utilizando listas encadeadas implementadas "do zero" em Python. O sistema gerencia múltiplas filas de prioridade com prevenção de inanição e controle de recursos.
 
 ### ⚡ Funcionalidades
 - ✅ Múltiplas filas de prioridade (Alta, Média, Baixa)
@@ -38,10 +38,10 @@ Implementação de um escalonador de processos para o sistema operacional iCEVOS
 - Abra o VS Code
 - Crie uma pasta de arquivo exclusiva para o Scheduler
 - Na pasta em que se encontra o Scheduler, crie um arquivo "processos.csv"
-- O arquivo Scheduler e o arquivo "processos.csv" **devem** estar na mesma pasta, mostrando apenas eles na área lateral esquerda do VS Code, caso o contrário, o arquivo python não achará "processos.csv"
+- O arquivo Scheduler e o arquivo "processos.csv" **devem** estar na mesma pasta, mostrando apenas eles na área lateral esquerda do VS Code, caso o contrário, o arquivo python não achará "processos.csv" e retornará: "Arquivo 'processos.csv' não encontrado!""Certifique-se de que o arquivo está na mesma pasta do programa"
 
 ### 📝 3. Preparação do Arquivo de Processos
-- Crie o arquivo processos.csv com este formato:
+- Crie o arquivo "processos.csv" com este formato ou siga o formato do arquivo exemplo no repositório:
 - """
 - id,nome,prioridade,ciclos_necessarios,recurso_necessario
 - 1,Chrome,1,5,
